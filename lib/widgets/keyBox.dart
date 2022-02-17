@@ -6,15 +6,33 @@ class KeyBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Widget keyCap;
+    double height;
+    double width;
+    if (letter == '<') {
+      width = 60;
+      height = 50;
+      keyCap = Icon(Icons.backspace_outlined);
+    } else if (letter == '_') {
+      width = 70;
+      height = 50;
+      keyCap = Text("Enter");
+    } else {
+      width = 40;
+      height = 50;
+      keyCap = Text(letter);
+    }
     return Container(
       alignment: Alignment.center,
-      width: 40,
-      height: 40,
+      width: width,
+      height: height,
       padding: EdgeInsets.all(10),
       margin: EdgeInsets.all(3),
-      decoration:
-          BoxDecoration(border: Border.all(color: Colors.black, width: 2)),
-      child: Text(letter),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(5)),
+        color: Color.fromARGB(50, 50, 50, 50),
+      ),
+      child: keyCap,
     );
   }
 }

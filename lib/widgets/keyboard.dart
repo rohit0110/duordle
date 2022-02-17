@@ -19,44 +19,15 @@ class _KeyboardState extends State<Keyboard> {
           children: [
             Row(
               mainAxisSize: MainAxisSize.min,
-              children: [
-                KeyBox("Q"),
-                KeyBox("W"),
-                KeyBox("E"),
-                KeyBox("R"),
-                KeyBox("T"),
-                KeyBox("Y"),
-                KeyBox("U"),
-                KeyBox("I"),
-                KeyBox("O"),
-                KeyBox("P"),
-              ],
+              children: [for (var i in "QWERTYUIOP".split("")) KeyBox(i)],
             ),
             Row(
               mainAxisSize: MainAxisSize.min,
-              children: [
-                KeyBox("A"),
-                KeyBox("S"),
-                KeyBox("D"),
-                KeyBox("F"),
-                KeyBox("G"),
-                KeyBox("H"),
-                KeyBox("J"),
-                KeyBox("K"),
-                KeyBox("L"),
-              ],
+              children: [for (var i in "ASDFGHJKL".split("")) KeyBox(i)],
             ),
             Row(
               mainAxisSize: MainAxisSize.min,
-              children: [
-                KeyBox("Z"),
-                KeyBox("X"),
-                KeyBox("C"),
-                KeyBox("V"),
-                KeyBox("B"),
-                KeyBox("N"),
-                KeyBox("M"),
-              ],
+              children: [for (var i in "_ZXCVBNM<".split("")) KeyBox(i)],
             )
           ],
         ));
