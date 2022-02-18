@@ -55,14 +55,26 @@ class GameStateNotifier extends StateNotifier<GameState> {
   }
 
   void updateCurrentAttempt(String key) {
+    final attempts = state.attempts;
+    if (attempts.length <= state.attempted) {
+      attempts.add("");
+    }
+    var curAttempt = attempts[state.attempted];
+
     if (key == '_') {
-    } else if (key == '<') {
-    } else {
-      final attempts = state.attempts;
-      if (attempts.length <= state.attempted) {
-        attempts.add("");
+      if (curAttempt.length < state.settings.wordsize) {
+        print("Insufficient Characters");
+        return;
+      } else {
+        state = state.clone(attempted: state.attempted + 1);
       }
-      var curAttempt = attempts[state.attempted];
+    } else if (key == '<') {
+      if (curAttempt.length > 0) {
+        curAttempt = curAttempt.substring(0, curAttempt.length - 1);
+      }
+      attempts[state.attempted] = curAttempt;
+      state = state.clone(attempts: attempts);
+    } else {
       if (curAttempt.length >= state.settings.wordsize) {
         print("Longer than allowed word");
         return;

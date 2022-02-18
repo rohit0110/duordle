@@ -14,14 +14,21 @@ class Grid extends ConsumerWidget {
 
     final wordsize = gameSettings.wordsize;
     final List<GridRow> rows = List.empty(growable: true);
-    print(gameState.attempts.length);
+    final correctWord = gameState.correctWord;
 
     for (int i = 0; i < gameSettings.attempts; i++) {
       var word = "";
       if (gameState.attempts.length > i) {
         word = gameState.attempts[i];
       }
-      rows.add(GridRow(totCols: wordsize, rowContent: word));
+      var attempted = false;
+      if (gameState.attempted > i) attempted = true;
+      rows.add(GridRow(
+        totCols: wordsize,
+        rowContent: word,
+        attempted: attempted,
+        correctWord: correctWord,
+      ));
     }
     return Container(
       padding: EdgeInsets.fromLTRB(0, 100, 0, 100),

@@ -24,21 +24,21 @@ class KeyBox extends ConsumerWidget {
       height = 50;
       keyCap = Text(letter);
     }
-    return Container(
-      alignment: Alignment.center,
-      width: width,
-      height: height,
-      padding: EdgeInsets.all(10),
-      margin: EdgeInsets.all(3),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(5)),
-        color: Color.fromARGB(50, 50, 50, 50),
-      ),
-      child: InkWell(
+    return InkWell(
+      onTap: () {
+        ref.read(gameStateProvider.notifier).updateCurrentAttempt(letter);
+      },
+      child: Container(
+        alignment: Alignment.center,
+        width: width,
+        height: height,
+        padding: EdgeInsets.all(10),
+        margin: EdgeInsets.all(3),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(5)),
+          color: Color.fromARGB(50, 50, 50, 50),
+        ),
         child: keyCap,
-        onTap: () {
-          ref.read(gameStateProvider.notifier).updateCurrentAttempt(letter);
-        },
       ),
     );
   }
