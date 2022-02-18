@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class GridBox extends StatelessWidget {
-  const GridBox({Key? key}) : super(key: key);
+  final String? letter;
+  const GridBox({Key? key, this.letter}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +14,7 @@ class GridBox extends StatelessWidget {
       margin: EdgeInsets.all(3),
       decoration:
           BoxDecoration(border: Border.all(color: Colors.black, width: 2)),
+      child: Text(letter ?? ""),
     );
   }
 }
