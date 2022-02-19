@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:duordle/data/word_data.dart';
+import 'package:duordle/main.dart';
 import 'package:duordle/providers/game_settings_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -65,6 +66,11 @@ class GameStateNotifier extends StateNotifier<GameState> {
       if (curAttempt.length < state.settings.wordsize) {
         print("Insufficient Characters");
         return;
+      } else if (!state.validWords.contains(curAttempt)) {
+        print("Word isnt in database WHOOPS");
+      } else if (curAttempt == state.correctWord) {
+        print("You win i guess");
+        resetCorrectWord();
       } else {
         state = state.clone(attempted: state.attempted + 1);
       }

@@ -21,9 +21,9 @@ class GridBox extends StatelessWidget {
     if (correctWord.indexOf(letter) == index) {
       return Colors.green;
     } else if (correctWord.contains(letter)) {
-      return Colors.yellow;
+      return Colors.yellow[800];
     } else {
-      return Colors.grey;
+      return Colors.grey[900];
     }
   }
 

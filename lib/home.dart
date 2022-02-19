@@ -18,7 +18,7 @@ class Home extends StatelessWidget {
           ),
         ),
       ),
-      backgroundColor: Colors.grey[700],
+      backgroundColor: Colors.grey[300],
     );
   }
 }

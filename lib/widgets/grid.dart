@@ -11,6 +11,7 @@ class Grid extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final gameSettings = ref.watch(gameSettingsProvider);
     final gameState = ref.watch(gameStateProvider);
+    final gameSettingsNotifier = ref.read(gameSettingsProvider.notifier);
 
     final wordsize = gameSettings.wordsize;
     final List<GridRow> rows = List.empty(growable: true);
